@@ -6,6 +6,8 @@
     <% } %>
 <% } else if (data.query) { %>
     <h2>Results for <span class="query"><%= _.escape(data.query) %></span></h2>
+<% } else { %>
+    <h2>Recently updated:</h2>
 <% } %>
 <ul id="packages"></ul>
 <button id="load-more" class="load-more" type="button">More packages&hellip;</button>
