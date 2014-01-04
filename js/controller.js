@@ -17,11 +17,13 @@ define([
         if (field !== "keyword" && field !== "author") {
             return this.search(query);
         }
+        var pageTitle;
         if (typeof(query) !== "string" || (query = query.trim()).length < 1) {
             query = null;
         } else {
-            app.appRouter.setPageTitle("Browse by " + field + ": '" + query + "'");
+            pageTitle = "Browse by " + field + ": '" + query + "'";
         }
+        app.appRouter.setPageTitle(pageTitle);
         app.contentRegion.show(new PackageListView({
             "collection": new Packages(),
             "type": "browse",
@@ -32,11 +34,13 @@ define([
     };
 
     Controller.prototype.search = function(query) {
+        var pageTitle;
         if (typeof(query) !== "string" || (query = query.trim()).length < 1) {
             query = null;
         } else {
-            app.appRouter.setPageTitle("Results for '" + query + "'");
+            pageTitle = "Results for '" + query + "'";
         }
+        app.appRouter.setPageTitle(pageTitle);
         app.contentRegion.show(new PackageListView({
             "collection": new Packages(),
             "type": "search",
