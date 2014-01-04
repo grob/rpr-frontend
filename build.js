@@ -6,7 +6,7 @@
     "removeCombined": true,
     "optimizeCss": "standard",
     "optimize": "uglify2",
-    "fileExclusionRegExp": /^\.|build\.|\.iml/,
+    "fileExclusionRegExp": /^\.|build\.|\.iml|\.md/,
     "modules": [
         {
             "name": "main"
