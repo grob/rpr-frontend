@@ -1,0 +1,11 @@
+<% if (data.type === "browse") { %>
+    <% if (data.field === "author") { %>
+        <h2>Packages by <span class="query"><%= _.escape(data.query) %></span></h2>
+    <% } else { %>
+        <h2>Packages for <%= _.escape(data.field) %> <span class="query"><%= _.escape(data.query) %></span></h2>
+    <% } %>
+<% } else if (data.query) { %>
+    <h2>Results for <span class="query"><%= _.escape(data.query) %></span></h2>
+<% } %>
+<ul id="packages"></ul>
+<button id="load-more" class="load-more" type="button">More packages&hellip;</button>

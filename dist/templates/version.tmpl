@@ -1,0 +1,82 @@
+<h2><a href="/download/<%= data.name %>/<%= data.version %>" data-external>Download <%= data.name %> <%= data.version %></a></h2>
+<dl>
+    <dt>Released</dt>
+    <dd><%= data.helpers.dates.format(data.modified, "dd. MMM. yyyy, HH:mm") %></dd>
+    <% if (_.isEmpty(data.engines) === false) { %>
+        <dt>Engines</dt>
+        <dd>
+            <ul>
+            <% _.each(data.engines, function(spec, name) { %>
+                <li><%= name %> <%= spec %></li>
+            <% }); %>
+            </ul>
+        </dd>
+    <% } %>
+
+    <dt>Dependencies</dt>
+    <dd>
+        <ul>
+        <% if (_.isEmpty(data.dependencies) === false) { %>
+            <% _.each(data.dependencies, function(spec, name) { %>
+                <li><a href="/packages/<%= name %>"><%= name %></a> <%= spec %></li>
+            <% }); %>
+        <% } else { %>
+            <li>none</li>
+        <% } %>
+        </ul>
+    </dd>
+
+    <% if (data.repositories.length > 0) { %>
+        <dt>Repositories</dt>
+        <dd>
+            <ul>
+            <% _.each(data.repositories, function(repo) { %>
+            <li><%= repo.type %>: <a href="<%= repo.url %><%= repo.path %>" data-external><%= repo.url %><%= repo.path %></a></li>
+            <% }); %>
+            </ul>
+        </dd>
+    <% } %>
+
+    <% if (data.maintainers.length > 0) { %>
+        <dt>Maintainers</dt>
+        <dd>
+            <ul>
+            <% _.each(data.maintainers, function(maintainer) { %>
+                <li>
+                    <% if (maintainer.web) { %>
+                        <a href="<%= maintainer.web %>" data-external><%= maintainer.name %></a>
+                    <% } else { %>
+                        <%= maintainer.name %>
+                    <% } %>
+                </li>
+            <% }); %>
+            </ul>
+        </dd>
+    <% } %>
+    <% if (data.contributors.length > 0) { %>
+        <dt>Contributors</dt>
+        <dd>
+            <ul>
+            <% _.each(data.contributors, function(contributor) { %>
+                <li>
+                    <% if (contributor.web) { %>
+                        <a href="<%= contributor.web %>" data-external><%= contributor.name %></a>
+                    <% } else { %>
+                        <%= contributor.name %>
+                    <% } %>
+                </li>
+            <% }); %>
+            </ul>
+        </dd>
+    <% } %>
+    <% if (data.licenses.length > 0) { %>
+        <dt>Licenses</dt>
+        <dd>
+            <ul>
+            <% _.each(data.licenses, function(license) { %>
+                <li><a href="<%= license.url %>" data-external><%= license.type %></a></li>
+            <% }); %>
+            </ul>
+        </dd>
+    <% } %>
+</dl>

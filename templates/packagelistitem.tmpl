@@ -1,0 +1,19 @@
+<div class="version">
+    <p>
+        <% if (data.author.gravatar) { %>
+            <img src="http://gravatar.com/avatar/<%= data.author.gravatar %>?s=40&d=mm&r=g" />
+        <% } %>
+        Version <%= data.latest %><br />
+        Released <%= data.helpers.dates.format(data.modified, "dd. MMM. yyyy HH:mm") %><br />
+        by <a href="/browse/author/<%= data.author.name %>"><%= data.author.name %></a>
+    </p>
+</div>
+<h3><a href="/packages/<%= data.name %>"><%= data.name %></a></h3>
+<p class="description"><%= data.description %></p>
+<div class="readme">
+    <button type="button" class="button-readme"
+            data-text="Show Readme"
+            data-unavailable="Readme not available"
+            data-close="Hide Readme">View Readme</button>
+    <section class="content"></section>
+</div>

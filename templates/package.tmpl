@@ -1,0 +1,21 @@
+<div class="package-detail">
+    <% if (data.author.gravatar) { %>
+        <img src="http://gravatar.com/avatar/<%= data.author.gravatar %>?s=60&d=mm&r=g" />
+    <% } %>
+    <h2><%= data.name %></h2>
+    <h4 class="author">by <a href="/browse/author/<%= data.author.name %>"><%= data.author.name %></a></h4>
+    <p class="description"><%= data.description %></p>
+    <pre><code>rp install <%= data.name %></code></pre>
+    <dl class="keywords">
+        <dt>Keywords</dt>
+        <dd>
+            <ul>
+                <% _.each(data.keywords, function(keyword) { %>
+                <li><a href='/browse/keyword/<%= keyword %>'><%= keyword %></a></li>
+                <% }); %>
+            </ul>
+        </dd>
+    </dl>
+    <div id="versions" class="versions"></div>
+</div>
+<div id="version" class="version-detail"></div>
